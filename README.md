@@ -5,7 +5,7 @@ Various Powershell Scripts
 
 For different reasons. Scripts for starting/stopping Windows Services.
 
-Start_Remote_Service
+<b>Start_Remote_Service</b>
 
 DESC: Checks if Service on Server is Started. 
     If FALSE: Start Service Based on Server/Service
@@ -13,7 +13,7 @@ DESC: Checks if Service on Server is Started.
     
 USAGE: FuncCheckService -ServiceName "ServiceToBeStarted" -Server "ServerName"
 
-Stop_Remote_Service
+<b>Stop_Remote_Service</b>
 
 DESC: Checks if Service on Server is Stopped. 
     If FALSE: Stop Service Based on Server/Service
