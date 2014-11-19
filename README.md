@@ -50,7 +50,7 @@ Requirements: <br>
 
 <b>autoMongoRestore_Start.ps1</b>
 
-DESC:
+DESC:<br>
 Sets up environment capable of sustaining a mongod restore and Event Logging, starts the mongod instance, and then cleans up afterwards.
 
 Parameters:	<br>
