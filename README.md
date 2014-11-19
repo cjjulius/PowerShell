@@ -1,9 +1,9 @@
 PowerShell
 ==========
 
-Various Powershell Scripts
+Various Powershell Scripts. 
 
-For different reasons. Scripts for starting/stopping Windows Services.
+Scripts for starting/stopping Windows Services.
 
 <b>Start_Remote_Service.ps1</b>
 
