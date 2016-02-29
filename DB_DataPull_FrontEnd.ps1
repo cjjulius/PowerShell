@@ -5,14 +5,15 @@
 #--------------------
 
 
-#XAML code from Stephen Owens at FoxDeploy
-#http://foxdeploy.com/2015/04/10/part-i-creating-powershell-guis-in-minutes-using-visual-studio-a-new-hope/
 #Point to Repository Instance.DB
 $RepositoryInstance = '(local)'
 $RepositoryDB = 'DBAdmin'
 
-#Build XML Form
+#############################
+#  		XAML code Reader
+#http://foxdeploy.com/2015/04/10/part-i-creating-powershell-guis-in-minutes-using-visual-studio-a-new-hope/
 #Put the sanitized code here from WPF_to_PSForm.ps1
+#############################
 $inputXML = @"
 <Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -42,6 +43,11 @@ $reader=(New-Object System.Xml.XmlNodeReader $xaml)
 # Load XAML Objects In PowerShell
 $xaml.SelectNodes("//*[@Name]") | %{Set-Variable -Name "WPF$($_.Name)" -Value $Form.FindName($_.Name)}
 
+
+#############################
+#	  Run SQL Commands
+#Based on: https://github.com/Proxx/PowerShell/blob/master/Network/Invoke-SQL.ps1
+#############################
 function Invoke-SQL {
     param
 	(
@@ -65,6 +71,9 @@ function Invoke-SQL {
     $dataSet.Tables
 }
 
+#############################
+#	  Get All Data
+#############################
 $WPFBt_All_Data.Add_Click(
 	{
 	$sqlCommand = "
@@ -78,6 +87,9 @@ $WPFBt_All_Data.Add_Click(
 	}
 )
 
+#############################
+#	Get Server Information
+#############################
 $WPFBt_Servers.Add_Click(
 	{
 	$sqlCommand = "
@@ -91,6 +103,9 @@ $WPFBt_Servers.Add_Click(
 	}
 )
 
+#############################
+#	Get Instance Information
+#############################
 $WPFBt_Instances.Add_Click(
 	{
 	$sqlCommand = "
@@ -105,6 +120,9 @@ $WPFBt_Instances.Add_Click(
 	}
 )
 
+#############################
+#	Get Database Information
+#############################
 $WPFBt_Databases.Add_Click(
 	{
 	$sqlCommand = "
@@ -118,6 +136,9 @@ $WPFBt_Databases.Add_Click(
 	}
 )
 
+#############################
+#	Get Services Information
+#############################
 $WPFBt_Services.Add_Click(
 	{
 	$sqlCommand = "
@@ -131,10 +152,16 @@ $WPFBt_Services.Add_Click(
 	}
 )
 
+#############################
+#		Close Form
+#############################
 $WPFBt_Exit.Add_Click(
 	{
 	$Form.Close()
 	}
 )
 
+#############################
+#		Display Form
+#############################
 $Form.ShowDialog() | out-null
