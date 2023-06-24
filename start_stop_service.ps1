@@ -95,7 +95,7 @@ else	#else, try to start/stop
             } 
         Catch 
             {
-            Write-host "After waiting for 2 minutes, $Service failed to $Verb."
+            Write-host "After waiting for $Timeout, $Service failed to $Verb."
             }
         $svc = (get-service -computername $Server -name $Service)
         if ($svc.status -eq $WaitingFor) 
